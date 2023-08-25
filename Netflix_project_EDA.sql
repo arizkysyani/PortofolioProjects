@@ -62,10 +62,10 @@ FROM netflixuserbase
 GROUP BY Age
 ORDER BY Age;
 
--- Identify country-wise revenue from each country
+-- Identify country-wise monthly revenue from each country
 SELECT Country,
-	SUM(FLOOR(DATEDIFF(LastPaymentDate, JoinDate)/30) * Monthly_Revenue) AS Total_Payment,
-    SUM(FLOOR(DATEDIFF(LastPaymentDate, JoinDate)/30) * Monthly_Revenue) / COUNT(*) AS Average_Spending_per_Country
+	SUM(Monthly_Revenue) AS Total_Monthly_Revenue,
+    SUM(Monthly_Revenue) / COUNT(*) AS Averag_Monthly_Rev
 FROM netflixuserbase
 GROUP BY Country
 ORDER BY 2 DESC;
